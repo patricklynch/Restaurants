@@ -1,36 +1,44 @@
 //
-//  RestaurantsTests.swift
+//  RestaurantTests.swift
 //  RestaurantsTests
 //
-//  Created by Patrick Lynch on 2/21/17.
+//  Created by Patrick Lynch on 2/22/17.
 //  Copyright © 2017 lynchdev. All rights reserved.
 //
 
 import XCTest
+import SwiftyJSON
 @testable import Restaurants
 
-class RestaurantsTests: XCTestCase {
+
+class RestaurantTests: XCTestCase {
+    
+    var restaurant: Restaurant!
     
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        guard let restaurantJson = JSON.fromBundle(named: "test-restaurant.json"),
+            let restaurant = Restaurant(json: restaurantJson) else {
+                XCTFail("Failed to load restaurant for testing")
+                return
+        }
+        self.restaurant = restaurant
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testParsing() {
+        XCTAssertEqual(restaurant.name, "Tanoshii Sushi")
+        XCTAssertEqual(restaurant.status, Restaurant.Status.open)
+        XCTAssertEqual(restaurant.sortingValues.bestMatch, 0.0)
+        XCTAssertEqual(restaurant.sortingValues.newest, 96.0)
+        XCTAssertEqual(restaurant.sortingValues.ratingAverage, 4.5)
+        XCTAssertEqual(restaurant.sortingValues.distance, 1190)
+        XCTAssertEqual(restaurant.sortingValues.popularity, 17.0)
+        XCTAssertEqual(restaurant.sortingValues.averageProductPrice, 1536)
+        XCTAssertEqual(restaurant.sortingValues.deliveryCosts, 200)
+        XCTAssertEqual(restaurant.sortingValues.minCost, 1000)
     }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-    
 }
