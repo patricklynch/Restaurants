@@ -13,6 +13,20 @@
 		5A4CAEEC1E5D006B00C89E8A /* test-restaurant.json in Resources */ = {isa = PBXBuildFile; fileRef = 5A4CAEEB1E5D006B00C89E8A /* test-restaurant.json */; };
 		5A4CAEEE1E5D01AC00C89E8A /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4CAEED1E5D01AC00C89E8A /* TestHelpers.swift */; };
 		5A4CAEF11E5D01E300C89E8A /* test-restaurants-list.json in Resources */ = {isa = PBXBuildFile; fileRef = 5A4CAEEF1E5D01D900C89E8A /* test-restaurants-list.json */; };
+		5A4CAEF51E5D02D500C89E8A /* RestaurantsListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4CAEF21E5D02D500C89E8A /* RestaurantsListCell.swift */; };
+		5A4CAEF61E5D02D500C89E8A /* RestaurantsListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4CAEF31E5D02D500C89E8A /* RestaurantsListDataSource.swift */; };
+		5A4CAEF71E5D02D500C89E8A /* RestaurantsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4CAEF41E5D02D500C89E8A /* RestaurantsListViewController.swift */; };
+		5A4CAEFD1E5D030B00C89E8A /* FavoritableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4CAEF81E5D030B00C89E8A /* FavoritableView.swift */; };
+		5A4CAEFE1E5D030B00C89E8A /* FavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4CAEF91E5D030B00C89E8A /* FavoriteButton.swift */; };
+		5A4CAEFF1E5D030B00C89E8A /* FormTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4CAEFA1E5D030B00C89E8A /* FormTextField.swift */; };
+		5A4CAF011E5D030B00C89E8A /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4CAEFC1E5D030B00C89E8A /* RatingView.swift */; };
+		5A4CAF031E5D037800C89E8A /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4CAF021E5D037800C89E8A /* Color.swift */; };
+		5A4CAF051E5D038000C89E8A /* UIKit+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4CAF041E5D038000C89E8A /* UIKit+Extensions.swift */; };
+		5A4CAF071E5D03E400C89E8A /* Restaurant+Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4CAF061E5D03E400C89E8A /* Restaurant+Favorite.swift */; };
+		5A4CAF091E5D0A6200C89E8A /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4CAF081E5D0A6200C89E8A /* NavigationController.swift */; };
+		5A4CAF0B1E5D0AF300C89E8A /* Sortable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4CAF0A1E5D0AF300C89E8A /* Sortable.swift */; };
+		5A4CAF0D1E5D0C4500C89E8A /* SelfUpdatingDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4CAF0C1E5D0C4500C89E8A /* SelfUpdatingDataSource.swift */; };
+		5A4CAF0F1E5D150200C89E8A /* BarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4CAF0E1E5D150200C89E8A /* BarButtonItem.swift */; };
 		5AEC6B081E5CFBE500041FE4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AEC6B071E5CFBE500041FE4 /* AppDelegate.swift */; };
 		5AEC6B0A1E5CFBE500041FE4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AEC6B091E5CFBE500041FE4 /* ViewController.swift */; };
 		5AEC6B0D1E5CFBE500041FE4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AEC6B0B1E5CFBE500041FE4 /* Main.storyboard */; };
@@ -43,6 +57,20 @@
 		5A4CAEEB1E5D006B00C89E8A /* test-restaurant.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "test-restaurant.json"; sourceTree = "<group>"; };
 		5A4CAEED1E5D01AC00C89E8A /* TestHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
 		5A4CAEEF1E5D01D900C89E8A /* test-restaurants-list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "test-restaurants-list.json"; path = "RestaurantsTests/test-restaurants-list.json"; sourceTree = SOURCE_ROOT; };
+		5A4CAEF21E5D02D500C89E8A /* RestaurantsListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantsListCell.swift; sourceTree = "<group>"; };
+		5A4CAEF31E5D02D500C89E8A /* RestaurantsListDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantsListDataSource.swift; sourceTree = "<group>"; };
+		5A4CAEF41E5D02D500C89E8A /* RestaurantsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantsListViewController.swift; sourceTree = "<group>"; };
+		5A4CAEF81E5D030B00C89E8A /* FavoritableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritableView.swift; sourceTree = "<group>"; };
+		5A4CAEF91E5D030B00C89E8A /* FavoriteButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteButton.swift; sourceTree = "<group>"; };
+		5A4CAEFA1E5D030B00C89E8A /* FormTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormTextField.swift; sourceTree = "<group>"; };
+		5A4CAEFC1E5D030B00C89E8A /* RatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
+		5A4CAF021E5D037800C89E8A /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		5A4CAF041E5D038000C89E8A /* UIKit+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIKit+Extensions.swift"; sourceTree = "<group>"; };
+		5A4CAF061E5D03E400C89E8A /* Restaurant+Favorite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Restaurant+Favorite.swift"; sourceTree = "<group>"; };
+		5A4CAF081E5D0A6200C89E8A /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		5A4CAF0A1E5D0AF300C89E8A /* Sortable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sortable.swift; sourceTree = "<group>"; };
+		5A4CAF0C1E5D0C4500C89E8A /* SelfUpdatingDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfUpdatingDataSource.swift; sourceTree = "<group>"; };
+		5A4CAF0E1E5D150200C89E8A /* BarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarButtonItem.swift; sourceTree = "<group>"; };
 		5AEC6B041E5CFBE500041FE4 /* Restaurants.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Restaurants.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AEC6B071E5CFBE500041FE4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5AEC6B091E5CFBE500041FE4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -114,13 +142,27 @@
 			children = (
 				5AEC6B071E5CFBE500041FE4 /* AppDelegate.swift */,
 				5AEC6B0E1E5CFBE500041FE4 /* Assets.xcassets */,
+				5A4CAF021E5D037800C89E8A /* Color.swift */,
+				5A4CAEF81E5D030B00C89E8A /* FavoritableView.swift */,
+				5A4CAEF91E5D030B00C89E8A /* FavoriteButton.swift */,
+				5A4CAF061E5D03E400C89E8A /* Restaurant+Favorite.swift */,
+				5A4CAEFA1E5D030B00C89E8A /* FormTextField.swift */,
 				5AEC6B131E5CFBE500041FE4 /* Info.plist */,
 				5AEC6B101E5CFBE500041FE4 /* LaunchScreen.storyboard */,
 				5AEC6B2B1E5CFE8600041FE4 /* LoadRestaurants.swift */,
 				5AEC6B0B1E5CFBE500041FE4 /* Main.storyboard */,
+				5A4CAF081E5D0A6200C89E8A /* NavigationController.swift */,
+				5A4CAEFC1E5D030B00C89E8A /* RatingView.swift */,
 				5AEC6B291E5CFD2500041FE4 /* Restaurant.swift */,
+				5A4CAEF21E5D02D500C89E8A /* RestaurantsListCell.swift */,
+				5A4CAEF31E5D02D500C89E8A /* RestaurantsListDataSource.swift */,
+				5A4CAEF41E5D02D500C89E8A /* RestaurantsListViewController.swift */,
+				5A4CAF0E1E5D150200C89E8A /* BarButtonItem.swift */,
+				5A4CAF0A1E5D0AF300C89E8A /* Sortable.swift */,
 				5AEC6B271E5CFD1500041FE4 /* sample.json */,
+				5A4CAF041E5D038000C89E8A /* UIKit+Extensions.swift */,
 				5AEC6B091E5CFBE500041FE4 /* ViewController.swift */,
+				5A4CAF0C1E5D0C4500C89E8A /* SelfUpdatingDataSource.swift */,
 			);
 			path = Restaurants;
 			sourceTree = "<group>";
@@ -356,9 +398,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A4CAF0F1E5D150200C89E8A /* BarButtonItem.swift in Sources */,
+				5A4CAF0D1E5D0C4500C89E8A /* SelfUpdatingDataSource.swift in Sources */,
+				5A4CAF051E5D038000C89E8A /* UIKit+Extensions.swift in Sources */,
 				5AEC6B2C1E5CFE8600041FE4 /* LoadRestaurants.swift in Sources */,
+				5A4CAEFF1E5D030B00C89E8A /* FormTextField.swift in Sources */,
 				5AEC6B0A1E5CFBE500041FE4 /* ViewController.swift in Sources */,
+				5A4CAF011E5D030B00C89E8A /* RatingView.swift in Sources */,
+				5A4CAF0B1E5D0AF300C89E8A /* Sortable.swift in Sources */,
+				5A4CAF031E5D037800C89E8A /* Color.swift in Sources */,
+				5A4CAEFD1E5D030B00C89E8A /* FavoritableView.swift in Sources */,
+				5A4CAF091E5D0A6200C89E8A /* NavigationController.swift in Sources */,
+				5A4CAEFE1E5D030B00C89E8A /* FavoriteButton.swift in Sources */,
+				5A4CAEF61E5D02D500C89E8A /* RestaurantsListDataSource.swift in Sources */,
+				5A4CAEF71E5D02D500C89E8A /* RestaurantsListViewController.swift in Sources */,
+				5A4CAF071E5D03E400C89E8A /* Restaurant+Favorite.swift in Sources */,
 				5AEC6B081E5CFBE500041FE4 /* AppDelegate.swift in Sources */,
+				5A4CAEF51E5D02D500C89E8A /* RestaurantsListCell.swift in Sources */,
 				5AEC6B2A1E5CFD2500041FE4 /* Restaurant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

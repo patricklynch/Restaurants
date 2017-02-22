@@ -9,10 +9,20 @@
 import Foundation
 import SwiftyJSON
 
-struct Restaurant {
+struct Restaurant: Equatable, Hashable {
+    
+    static let ratingTotal: Int = 5
     
     enum Status: String {
         case open, closed, orderAhead = "order ahead"
+        
+        var text: String {
+            switch self {
+            case .open:         return NSLocalizedString("status.open", comment: "")
+            case .closed:       return NSLocalizedString("status.closed", comment: "")
+            case .orderAhead:   return NSLocalizedString("status.orderAhead", comment: "")
+            }
+        }
     }
     
     struct SortingValues {
@@ -50,15 +60,30 @@ struct Restaurant {
     let name: String
     let status: Status
     let sortingValues: SortingValues
+    let rating: Int
     
     init?(json: JSON) {
         guard let name = json["name"].string,
             let status = Status(rawValue: json["status"].stringValue),
+            let rating = json["rating"].int,
             let sortingValues = SortingValues(json:json["sortingValues"]) else {
                 return nil
         }
         self.name = name
         self.status = status
+        self.rating = rating
         self.sortingValues = sortingValues
+    }
+    
+    // MARK: - Hashable
+    
+    var hashValue: Int {
+        return name.hashValue
+    }
+    
+    // MARK: - Equatable
+    
+    static func ==(lhs: Restaurant, rhs: Restaurant) -> Bool {
+        return lhs.name == rhs.name
     }
 }

@@ -1,6 +1,7 @@
 {
     "name": "Tanoshii Sushi",
     "status": "open",
+    "rating" : 4,
     "sortingValues": {
         "bestMatch": 0.0,
         "newest": 96.0,
