@@ -19,24 +19,32 @@ class RestaurantListCell: UITableViewCell, FavoritableView {
     @IBOutlet private weak var shadowContainerView: UIView!
     @IBOutlet private weak var favoriteButton: FavoriteButton!
     @IBOutlet private weak var titleLabel: UILabel!
-    @IBOutlet private weak var subtitleLabel: UILabel!
+    @IBOutlet private weak var statusLabel: UILabel!
+    @IBOutlet private weak var distanceLabel: UILabel!
+    @IBOutlet private weak var priceRatingLabel: UILabel!
+    @IBOutlet private weak var deliveryCostLabel: UILabel!
     @IBOutlet private weak var thumbnailImageView: UIImageView!
     @IBOutlet private weak var ratingView: RatingView!
     
-    struct ViewData {
+    struct ViewModel {
         let title: String
-        let subtitle: String
-        let rating: Rating
+        let status: String
+        let distance: String
+        let averageRating: Rating
+        let priceRating: Rating
+        let deliveryCost: String
         let imageUrl: URL
     }
     
-    var viewData: ViewData? {
+    var viewData: ViewModel? {
         didSet {
             if let viewData = viewData {
                 titleLabel.text = viewData.title
-                subtitleLabel.text = viewData.subtitle
-                ratingView.rating = viewData.rating
-                
+                statusLabel.text = viewData.status
+                distanceLabel.text = viewData.distance
+                priceRatingLabel.text = "\(viewData.priceRating.current)"
+                ratingView.rating = viewData.averageRating
+                deliveryCostLabel.text = "Delivery cost: \(viewData.deliveryCost)"
                 thumbnailImageView.fadeInImage(at: viewData.imageUrl)
             }
         }
@@ -61,11 +69,6 @@ class RestaurantListCell: UITableViewCell, FavoritableView {
         super.awakeFromNib()
         
         isFavorited = false
-        
-        favoriteButton.layer.shadowRadius = 3.0
-        favoriteButton.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
-        favoriteButton.layer.shadowColor = UIColor.black.cgColor
-        favoriteButton.layer.shadowOpacity = 0.75
         
         roundedRectView.layer.cornerRadius = 5.0
         

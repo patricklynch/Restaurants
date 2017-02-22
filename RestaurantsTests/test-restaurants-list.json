@@ -1,7 +1,6 @@
 {
     "restaurants": [{
                     "name": "Tanoshii Sushi",
-                    "rating" : 4,
                     "status": "open",
                     "sortingValues": {
                     "bestMatch": 0.0,
@@ -16,7 +15,6 @@
                     }, {
                     "name": "Tandoori Express",
                     "status": "closed",
-                    "rating" : 3,
                     "sortingValues": {
                     "bestMatch": 1.0,
                     "newest": 266.0,
@@ -30,7 +28,6 @@
                     }, {
                     "name": "Royal Thai",
                     "status": "order ahead",
-                    "rating" : 2,
                     "sortingValues": {
                     "bestMatch": 2.0,
                     "newest": 133.0,
@@ -44,7 +41,6 @@
                     }, {
                     "name": "Sushi One",
                     "status": "open",
-                    "rating" : 5,
                     "sortingValues": {
                     "bestMatch": 3.0,
                     "newest": 238.0,
@@ -57,7 +53,6 @@
                     }
                     }, {
                     "name": "Roti Shop",
-                    "rating" : 3,
                     "status": "open",
                     "sortingValues": {
                     "bestMatch": 4.0,
@@ -72,7 +67,6 @@
                     }, {
                     "name": "Aarti 2",
                     "status": "open",
-                    "rating" : 2,
                     "sortingValues": {
                     "bestMatch": 5.0,
                     "newest": 153.0,
@@ -86,7 +80,6 @@
                     }, {
                     "name": "Pizza Heart",
                     "status": "order ahead",
-                    "rating" : 5,
                     "sortingValues": {
                     "bestMatch": 6.0,
                     "newest": 118.0,
@@ -100,7 +93,6 @@
                     }, {
                     "name": "Mama Mia",
                     "status": "order ahead",
-                    "rating" : 3,
                     "sortingValues": {
                     "bestMatch": 7.0,
                     "newest": 250.0,
@@ -114,7 +106,6 @@
                     }, {
                     "name": "Feelfood",
                     "status": "order ahead",
-                    "rating" : 4,
                     "sortingValues": {
                     "bestMatch": 8.0,
                     "newest": 163.0,
@@ -128,7 +119,6 @@
                     }, {
                     "name": "Daily Sushi",
                     "status": "closed",
-                    "rating" : 1,
                     "sortingValues": {
                     "bestMatch": 9.0,
                     "newest": 221.0,
@@ -142,7 +132,6 @@
                     }, {
                     "name": "Pamukkale",
                     "status": "closed",
-                    "rating" : 3,
                     "sortingValues": {
                     "bestMatch": 10.0,
                     "newest": 201.0,
@@ -156,7 +145,6 @@
                     }, {
                     "name": "Indian Kitchen",
                     "status": "open",
-                    "rating" : 5,
                     "sortingValues": {
                     "bestMatch": 11.0,
                     "newest": 272.0,
@@ -170,7 +158,6 @@
                     }, {
                     "name": "CIRO 1939",
                     "status": "open",
-                    "rating" : 1,
                     "sortingValues": {
                     "bestMatch": 12.0,
                     "newest": 231.0,
@@ -183,7 +170,6 @@
                     }
                     }, {
                     "name": "Zenzai Sushi",
-                    "rating" : 5,
                     "status": "closed",
                     "sortingValues": {
                     "bestMatch": 13.0,
@@ -198,7 +184,6 @@
                     }, {
                     "name": "Fes Patisserie",
                     "status": "order ahead",
-                    "rating" : 3,
                     "sortingValues": {
                     "bestMatch": 14.0,
                     "newest": 77.0,
@@ -212,7 +197,6 @@
                     }, {
                     "name": "Yvonne's Vispaleis",
                     "status": "order ahead",
-                    "rating" : 1,
                     "sortingValues": {
                     "bestMatch": 15.0,
                     "newest": 150.0,
@@ -226,7 +210,6 @@
                     }, {
                     "name": "De Amsterdamsche Tram",
                     "status": "open",
-                    "rating" : 2,
                     "sortingValues": {
                     "bestMatch": 304.0,
                     "newest": 131.0,
@@ -240,7 +223,6 @@
                     }, {
                     "name": "Lale Restaurant & Snackbar",
                     "status": "order ahead",
-                    "rating" : 5,
                     "sortingValues": {
                     "bestMatch": 305.0,
                     "newest": 73.0,
@@ -254,7 +236,6 @@
                     }, {
                     "name": "Lunchpakketdienst",
                     "status": "open",
-                    "rating" : 3,
                     "sortingValues": {
                     "bestMatch": 306.0,
                     "newest": 259.0,

@@ -11,7 +11,8 @@ import SwiftyJSON
 
 struct Restaurant: Equatable, Hashable {
     
-    static let ratingTotal: Int = 5
+    static let averageRatingTotal: Int = 5
+    static let priceRatingTotal: Int = 3
     
     enum Status: String {
         case open, closed, orderAhead = "order ahead"
@@ -60,18 +61,15 @@ struct Restaurant: Equatable, Hashable {
     let name: String
     let status: Status
     let sortingValues: SortingValues
-    let rating: Int
     
     init?(json: JSON) {
         guard let name = json["name"].string,
             let status = Status(rawValue: json["status"].stringValue),
-            let rating = json["rating"].int,
             let sortingValues = SortingValues(json:json["sortingValues"]) else {
                 return nil
         }
         self.name = name
         self.status = status
-        self.rating = rating
         self.sortingValues = sortingValues
     }
     
@@ -85,5 +83,22 @@ struct Restaurant: Equatable, Hashable {
     
     static func ==(lhs: Restaurant, rhs: Restaurant) -> Bool {
         return lhs.name == rhs.name
+    }
+    
+    // MARK: - Conveneince getters
+    
+    var averageRating: Rating {
+        return Rating(
+            current: Int(sortingValues.ratingAverage),
+            total: Restaurant.averageRatingTotal
+        )
+    }
+    
+    var priceRating: Rating {
+        let currentValue = sortingValues.averageProductPrice / Restaurant.priceRatingTotal
+        return Rating(
+            current: currentValue,
+            total: Restaurant.priceRatingTotal
+        )
     }
 }

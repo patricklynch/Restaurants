@@ -34,46 +34,15 @@ class RestaurantsListViewController: UIViewController, FavoritableViewDelegate, 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        updateToolbarItems()
-    }
-    
-    // MARK: - Toolbar
-    
-    private var toolbarButtonItems: [UIBarButtonItem] = []
-    
-    func updateToolbarItems() {
-        let itemSpacing: CGFloat = 2.0
-        var allToolbarItems: [UIBarButtonItem] = []
-        allToolbarItems.append(UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil))
-        for option in SortOptions.all {
-            let button = BarButtonItem(
-                title: option.label,
-                target: self,
-                action: #selector(onToolbarItemSelected)
-            )
-            toolbarButtonItems.append(button)
-            allToolbarItems.append(button)
-            if option != SortOptions.all.last {
-                let space = UIBarButtonItem(
-                    barButtonSystemItem: .fixedSpace,
-                    target: nil,
-                    action: nil
-                )
-                space.width = itemSpacing
-                allToolbarItems.append(space)
-            }
-        }
-        allToolbarItems.append(UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil))
-        setToolbarItems(allToolbarItems, animated: false)
+        let localizedTitle = NSLocalizedString("title.filters", comment: "")
+        let barButtonItem = BarButtonItem(title: localizedTitle, target: self, action: #selector(showFilters))
+        navigationItem.rightBarButtonItem = barButtonItem
     }
     
     // MARK: - Actions
     
-    @objc private func onToolbarItemSelected(sender: UIBarButtonItem) {
-        guard let index = toolbarItems?.index(of: sender) else {
-            return
-        }
-        dataSource.sortOption = SortOptions.all[index]
+    @objc private func showFilters() {
+        
     }
     
     // MARK: - UITableViewDelegate

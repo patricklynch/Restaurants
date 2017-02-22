@@ -25,6 +25,19 @@ class RestaurantsListDataSource: NSObject, Sortable, SelfUpdatingDataSource, UIT
     
     let title: String = NSLocalizedString("title.restaurants", comment: "")
     
+    private lazy var distanceFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.locale = Locale(identifier: "en_DE")
+        return formatter
+    }()
+    
+    private lazy var priceFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.locale = Locale(identifier: "en_DE")
+        return formatter
+    }()
+    
     // Background queue for loading restaurants
     let loadingQueue = OperationQueue()
     
@@ -43,7 +56,7 @@ class RestaurantsListDataSource: NSObject, Sortable, SelfUpdatingDataSource, UIT
         loadingQueue.addOperation(operation)
     }
     
-    // MARK: - UITableViewDataSource
+    // MARK: - UITableViewModelSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
@@ -63,10 +76,15 @@ class RestaurantsListDataSource: NSObject, Sortable, SelfUpdatingDataSource, UIT
     func decorate(cell: UIView, at indexPath: IndexPath) {
         let restaurant = items[indexPath.row] as! Restaurant
         let cell = cell as! RestaurantListCell
-        cell.viewData = RestaurantListCell.ViewData(
+        let distance = Float(restaurant.sortingValues.distance) / 1000.0
+        let deliveryCost = Float(restaurant.sortingValues.deliveryCosts) / 100.0
+        cell.viewData = RestaurantListCell.ViewModel(
             title: restaurant.name,
-            subtitle: restaurant.status.text,
-            rating: Rating(current: restaurant.rating, total: Restaurant.ratingTotal),
+            status: restaurant.status.text,
+            distance: distanceFormatter.string(from: NSNumber(value: distance)) ?? "",
+            averageRating: restaurant.averageRating,
+            priceRating: restaurant.priceRating,
+            deliveryCost: priceFormatter.string(from: NSNumber(value: deliveryCost)) ?? "",
             imageUrl: URL(string: "http://www.google.com")! // restaurant.imageUrl
         )
     }

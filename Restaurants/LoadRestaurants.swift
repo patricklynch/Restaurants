@@ -33,7 +33,9 @@ class LoadRestaurants: Operation {
         do {
             let data = try Data(contentsOf: url, options: [])
             let json = JSON(data: data)
-            results = json["restaurants"].arrayValue.flatMap { Restaurant(json: $0) }
+            let restaurants = json["restaurants"].arrayValue.flatMap { Restaurant(json: $0) }
+            print(restaurants.flatMap { $0.name })
+            results = restaurants
         } catch {
             self.error = error as NSError
         }

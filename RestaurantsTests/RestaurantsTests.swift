@@ -32,7 +32,6 @@ class RestaurantTests: XCTestCase {
     func testParsing() {
         XCTAssertEqual(restaurant.name, "Tanoshii Sushi")
         XCTAssertEqual(restaurant.status, Restaurant.Status.open)
-        XCTAssertEqual(restaurant.rating, 4)
         XCTAssertEqual(restaurant.sortingValues.bestMatch, 0.0)
         XCTAssertEqual(restaurant.sortingValues.newest, 96.0)
         XCTAssertEqual(restaurant.sortingValues.ratingAverage, 4.5)

@@ -32,7 +32,7 @@ class FavoriteButton: UIButton {
                 tintColor = UIColor.red
                 image = unfavoriteImage
             } else {
-                tintColor = UIColor.white
+                tintColor = Color.mediumGray
                 image = favoriteImage
             }
             setImage(image.withRenderingMode(.alwaysTemplate), for: .normal)
