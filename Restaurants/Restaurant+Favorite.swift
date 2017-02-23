@@ -15,7 +15,7 @@ struct DefaultsKeys {
 extension Restaurant {
     
     func isFavorited(in defaults: UserDefaults = UserDefaults.standard) -> Bool {
-        let favoritesArray = defaults.value(forKey: DefaultsKeys.favorites) as? Set<String> ?? []
+        let favoritesArray = defaults.value(forKey: DefaultsKeys.favorites) as? [String] ?? []
         return favoritesArray.contains(self.name)
     }
     

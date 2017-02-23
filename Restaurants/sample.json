@@ -1,6 +1,7 @@
 {
     "restaurants": [{
                     "name": "Tanoshii Sushi",
+                    "imageUrl" : "http://www.tanoshiisushi.nl/www.tanoshiisushi.nl/img/logo.png",
                     "status": "open",
                     "sortingValues": {
                     "bestMatch": 0.0,
@@ -14,6 +15,7 @@
                     }
                     }, {
                     "name": "Tandoori Express",
+                    "imageUrl" : "https://s-media-cache-ak0.pinimg.com/236x/81/6f/b9/816fb9fe45c58d8d3ea3c5c22d623ab3.jpg",
                     "status": "closed",
                     "sortingValues": {
                     "bestMatch": 1.0,
@@ -28,6 +30,7 @@
                     }, {
                     "name": "Royal Thai",
                     "status": "order ahead",
+                    "imageUrl" : "http://restaurant.myancompare.com/share/55ffa9cf3e6b1.jpg",
                     "sortingValues": {
                     "bestMatch": 2.0,
                     "newest": 133.0,
@@ -40,6 +43,7 @@
                     }
                     }, {
                     "name": "Sushi One",
+                    "imageUrl" : "http://sushionenc.com/mobile/menu/assets/images/slider/13.jpg",
                     "status": "open",
                     "sortingValues": {
                     "bestMatch": 3.0,
@@ -53,6 +57,7 @@
                     }
                     }, {
                     "name": "Roti Shop",
+                    "imageUrl" : "https://irp-cdn.multiscreensite.com/b5210d47/dms3rep/multi/desktop/NAME-4018x2130.gif",
                     "status": "open",
                     "sortingValues": {
                     "bestMatch": 4.0,
@@ -66,6 +71,7 @@
                     }
                     }, {
                     "name": "Aarti 2",
+                    "imageUrl" : "http://cdn.appshopper.com/icons/106/8144147_larger.png",
                     "status": "open",
                     "sortingValues": {
                     "bestMatch": 5.0,
@@ -79,6 +85,7 @@
                     }
                     }, {
                     "name": "Pizza Heart",
+                    "imageUrl" : "https://image.shutterstock.com/z/stock-vector-vector-illustration-of-pizza-heart-112994905.jpg",
                     "status": "order ahead",
                     "sortingValues": {
                     "bestMatch": 6.0,
@@ -93,6 +100,7 @@
                     }, {
                     "name": "Mama Mia",
                     "status": "order ahead",
+                    "imageUrl" : "http://www.mammamiaitalianrestaurant.com/wp-content/uploads/2013/07/Mamma-Mia-Logo2.png",
                     "sortingValues": {
                     "bestMatch": 7.0,
                     "newest": 250.0,
@@ -105,6 +113,7 @@
                     }
                     }, {
                     "name": "Feelfood",
+                    "imageUrl" : "http://greenbeandelivery.com/healthytimes/wp-content/uploads/2013/10/feel-good-food2-471x282.jpg",
                     "status": "order ahead",
                     "sortingValues": {
                     "bestMatch": 8.0,
@@ -118,6 +127,7 @@
                     }
                     }, {
                     "name": "Daily Sushi",
+                    "imageUrl" : "http://sushidaily.com/wp-content/uploads/2015/10/New_Logo_English-web.jpg",
                     "status": "closed",
                     "sortingValues": {
                     "bestMatch": 9.0,
@@ -131,6 +141,7 @@
                     }
                     }, {
                     "name": "Pamukkale",
+                    "imageUrl" : "https://media.cylex.de/companies/6588/165/logo/logo.jpg",
                     "status": "closed",
                     "sortingValues": {
                     "bestMatch": 10.0,
@@ -144,6 +155,7 @@
                     }
                     }, {
                     "name": "Indian Kitchen",
+                    "imageUrl" : "http://www.dcgmembership.com/v1/img/indiankitchen-logo.png",
                     "status": "open",
                     "sortingValues": {
                     "bestMatch": 11.0,
@@ -157,6 +169,7 @@
                     }
                     }, {
                     "name": "CIRO 1939",
+                    "imageUrl" : "https://pbs.twimg.com/profile_images/959682493/648711928_6_KSdD_400x400.jpeg",
                     "status": "open",
                     "sortingValues": {
                     "bestMatch": 12.0,
@@ -171,6 +184,7 @@
                     }, {
                     "name": "Zenzai Sushi",
                     "status": "closed",
+                    "imageUrl" : "http://t1.rbxcdn.com/d277c1a430e398b5331ace7be84f3cff",
                     "sortingValues": {
                     "bestMatch": 13.0,
                     "newest": 155.0,
@@ -183,6 +197,7 @@
                     }
                     }, {
                     "name": "Fes Patisserie",
+                    "imageUrl" : "http://mandmpatisserie.com/wp-content/uploads/2015/06/mm_smlogo.png",
                     "status": "order ahead",
                     "sortingValues": {
                     "bestMatch": 14.0,
@@ -197,6 +212,7 @@
                     }, {
                     "name": "Yvonne's Vispaleis",
                     "status": "order ahead",
+                    "imageUrl" : "http://static.takeaway.com/images/restaurants/nl/5Q3Q73N/logo.png",
                     "sortingValues": {
                     "bestMatch": 15.0,
                     "newest": 150.0,
@@ -209,6 +225,7 @@
                     }
                     }, {
                     "name": "De Amsterdamsche Tram",
+                    "imageUrl" : "http://www.deamsterdamschetram.nl/images/amsterdamsche-tram-logo.png",
                     "status": "open",
                     "sortingValues": {
                     "bestMatch": 304.0,
@@ -223,6 +240,7 @@
                     }, {
                     "name": "Lale Restaurant & Snackbar",
                     "status": "order ahead",
+                    "imageUrl" : "http://1.bp.blogspot.com/-S7DN5DLVg9M/UcK6urJhsoI/AAAAAAAAaZk/-Sc4doD9grk/s1600/Lale+logo+2013.png",
                     "sortingValues": {
                     "bestMatch": 305.0,
                     "newest": 73.0,
@@ -235,6 +253,7 @@
                     }
                     }, {
                     "name": "Lunchpakketdienst",
+                    "imageUrl" : "http://www.lunchpakketdienst.nl/Files/6/91000/91627/Jade/Media/LPD%20logo_nl.jpg",
                     "status": "open",
                     "sortingValues": {
                     "bestMatch": 306.0,

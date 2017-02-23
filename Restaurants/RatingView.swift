@@ -8,6 +8,11 @@
 
 import UIKit
 
+struct Rating {
+    let current: Int
+    let total: Int
+}
+
 class RatingView: UIControl {
     
     let solidImage = UIImage(named:"star-solid")!

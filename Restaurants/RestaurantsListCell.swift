@@ -8,11 +8,6 @@
 
 import UIKit
 
-struct Rating {
-    let current: Int
-    let total: Int
-}
-
 class RestaurantListCell: UITableViewCell, FavoritableView {
     
     @IBOutlet private weak var roundedRectView: UIView!
@@ -29,10 +24,10 @@ class RestaurantListCell: UITableViewCell, FavoritableView {
     struct ViewModel {
         let title: String
         let status: String
-        let distance: String
+        let locationDescription: String
         let averageRating: Rating
-        let priceRating: Rating
-        let deliveryCost: String
+        let priceDescription: String
+        let deliveryDescription: String
         let imageUrl: URL
     }
     
@@ -41,10 +36,10 @@ class RestaurantListCell: UITableViewCell, FavoritableView {
             if let viewData = viewData {
                 titleLabel.text = viewData.title
                 statusLabel.text = viewData.status
-                distanceLabel.text = viewData.distance
-                priceRatingLabel.text = "\(viewData.priceRating.current)"
+                distanceLabel.text = viewData.locationDescription
+                priceRatingLabel.text = viewData.priceDescription
                 ratingView.rating = viewData.averageRating
-                deliveryCostLabel.text = "Delivery cost: \(viewData.deliveryCost)"
+                deliveryCostLabel.text = viewData.deliveryDescription
                 thumbnailImageView.fadeInImage(at: viewData.imageUrl)
             }
         }
@@ -70,10 +65,13 @@ class RestaurantListCell: UITableViewCell, FavoritableView {
         
         isFavorited = false
         
-        roundedRectView.layer.cornerRadius = 5.0
+        thumbnailImageView.layer.borderColor = Color.mediumGray.cgColor
+        thumbnailImageView.layer.borderWidth = 1.0
+        
+        roundedRectView.layer.cornerRadius = 3.0
         
         shadowContainerView.layer.cornerRadius = 5.0
-        shadowContainerView.layer.shadowRadius = 3.0
+        shadowContainerView.layer.shadowRadius = 2.0
         shadowContainerView.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
         shadowContainerView.layer.shadowColor = UIColor.black.cgColor
         shadowContainerView.layer.shadowOpacity = 0.25

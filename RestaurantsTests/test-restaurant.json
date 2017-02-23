@@ -1,6 +1,7 @@
 {
     "name": "Tanoshii Sushi",
     "status": "open",
+    "imageUrl" : "http://www.tanoshiisushi.nl/www.tanoshiisushi.nl/img/logo.png",
     "rating" : 4,
     "sortingValues": {
         "bestMatch": 0.0,

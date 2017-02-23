@@ -32,5 +32,5 @@ class Color {
     static var darkOrange = UIColor(hex: 0xe17800)
     static var darkGray = UIColor(hex: 0x353535)
     static var mediumGray = UIColor(hex: 0xd2d2d2)
-    static var lightGray = UIColor(hex: 0xfafaf6)
+    static var lightGray = UIColor(hex: 0xeeeeee)
 }

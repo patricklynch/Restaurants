@@ -8,10 +8,10 @@
 
 import UIKit
 
-class RestaurantsListDataSource: NSObject, Sortable, SelfUpdatingDataSource, UITableViewDataSource {
+class RestaurantsListDataSource: NSObject, Sortable, SearchControllerDelegate, SelfUpdatingDataSource, UITableViewDataSource {
     
     /// To prevent locking the main thread while sorting large data sets:
-    private let sortQueue = DispatchQueue(label: "com.lynchdev.Restaurants.sortQueue")
+    private let backgroundQueue = DispatchQueue(label: "com.lynchdev.Restaurants.backgroundQueue")
     
     private(set) var items = NSOrderedSet(){
         didSet {
@@ -24,19 +24,6 @@ class RestaurantsListDataSource: NSObject, Sortable, SelfUpdatingDataSource, UIT
     }
     
     let title: String = NSLocalizedString("title.restaurants", comment: "")
-    
-    private lazy var distanceFormatter: NumberFormatter = {
-        let formatter = NumberFormatter()
-        formatter.locale = Locale(identifier: "en_DE")
-        return formatter
-    }()
-    
-    private lazy var priceFormatter: NumberFormatter = {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        formatter.locale = Locale(identifier: "en_DE")
-        return formatter
-    }()
     
     // Background queue for loading restaurants
     let loadingQueue = OperationQueue()
@@ -63,8 +50,7 @@ class RestaurantsListDataSource: NSObject, Sortable, SelfUpdatingDataSource, UIT
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let identifier = RestaurantListCell.defaultReuseIdentifier
-        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "RestaurantListCell", for: indexPath)
         decorate(cell: cell, at: indexPath)
         return cell
     }
@@ -74,74 +60,93 @@ class RestaurantsListDataSource: NSObject, Sortable, SelfUpdatingDataSource, UIT
     var delegate: SelfUpdatingDataSourceDelegate?
     
     func decorate(cell: UIView, at indexPath: IndexPath) {
-        let restaurant = items[indexPath.row] as! Restaurant
         let cell = cell as! RestaurantListCell
-        let distance = Float(restaurant.sortingValues.distance) / 1000.0
-        let deliveryCost = Float(restaurant.sortingValues.deliveryCosts) / 100.0
+        let restaurant = items[indexPath.row] as! Restaurant
         cell.viewData = RestaurantListCell.ViewModel(
             title: restaurant.name,
-            status: restaurant.status.text,
-            distance: distanceFormatter.string(from: NSNumber(value: distance)) ?? "",
+            status: restaurant.status.description,
+            locationDescription: restaurant.locationDescription,
             averageRating: restaurant.averageRating,
-            priceRating: restaurant.priceRating,
-            deliveryCost: priceFormatter.string(from: NSNumber(value: deliveryCost)) ?? "",
-            imageUrl: URL(string: "http://www.google.com")! // restaurant.imageUrl
+            priceDescription: restaurant.priceDescription,
+            deliveryDescription: restaurant.deliveryDescription,
+            imageUrl: restaurant.imageUrl
         )
+        cell.isFavorited = restaurant.isFavorited()
+    }
+    
+    // MARK: - SearchControllerDelegate
+    
+    var searchTerm: String? {
+        didSet {
+            sortAndFilterItems()
+        }
     }
     
     // MARK: - Sortable
     
-    var sortOption: SortOptions? = .bestMatch {
+    var sortOption: SortOptions? = .deliveryCosts {
         didSet {
             items = NSOrderedSet(array: [])
             
             DispatchQueue.main.asyncAfter(delay: 0.25) {
-                self.updateSortedItems()
+                self.sortAndFilterItems()
             }
         }
     }
     
     private(set) var unsortedItems = NSOrderedSet() {
         didSet {
-            updateSortedItems()
+            sortAndFilterItems()
         }
     }
     
-    private func updateSortedItems() {
+    private func sortAndFilterItems() {
         guard let sortOption = sortOption else {
             items = unsortedItems
             return
         }
         
-        let options = unsortedItems.flatMap { $0 as? Restaurant }
-        sortQueue.async {
-            let results = options.sorted {
-                switch sortOption {
-                case .bestMatch:
-                    return $0.sortingValues.bestMatch < $1.sortingValues.bestMatch
-                case .newest:
-                    return $0.sortingValues.newest < $1.sortingValues.newest
-                case .ratingAverage:
-                    return $0.sortingValues.ratingAverage < $1.sortingValues.ratingAverage
-                case .distance:
-                    return $0.sortingValues.distance < $1.sortingValues.distance
-                case .popularity:
-                    return $0.sortingValues.popularity < $1.sortingValues.popularity
-                case .averageProductPrice:
-                    return $0.sortingValues.averageProductPrice < $1.sortingValues.averageProductPrice
-                case .deliveryCosts:
-                    return $0.sortingValues.deliveryCosts < $1.sortingValues.deliveryCosts
-                case .minCost:
-                    return $0.sortingValues.minCost < $1.sortingValues.minCost
-                }
+        let restaurants = unsortedItems.flatMap { $0 as? Restaurant }
+        backgroundQueue.async { [weak self] in
+            
+            // Fitler
+            let filteredResults: [Restaurant]
+            if let searchTerm = self?.searchTerm, searchTerm.containsNonSpaceCharacter() {
+                let sanitzedTerm = searchTerm.lowercased()
+                filteredResults = restaurants.filter { $0.name.matches(sanitzedTerm) }
+            } else {
+                filteredResults = restaurants
             }
+            
+            // Sort
+            let sortedResults: [Restaurant]
+            if let sorter = sortOption.sorter {
+                sortedResults = sorter.sorted(from: filteredResults)
+            } else {
+                sortedResults = filteredResults
+            }
+            
             DispatchQueue.main.async { [weak self] in
-                guard let strongSelf = self else {
-                    return
-                }
-                strongSelf.items = NSOrderedSet(array: results)
+                self?.items = NSOrderedSet(array: sortedResults)
             }
         }
+    }
+}
+
+fileprivate extension String {
+    
+    func matches(_ searchTerm: String) -> Bool {
+        if searchTerm.characters.count == 1 {
+            let words = lowercased().components(separatedBy: " ")
+            return words.contains { $0.characters.first == searchTerm.characters.first }
+        } else {
+            return lowercased().contains(searchTerm)
+        }
+    }
+    
+    func containsNonSpaceCharacter() -> Bool {
+        let space = " ".characters.first!
+        return !characters.filter { $0 != space }.isEmpty
     }
 }
 

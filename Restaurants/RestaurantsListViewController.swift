@@ -11,6 +11,7 @@ import UIKit
 class RestaurantsListViewController: UIViewController, FavoritableViewDelegate, UITableViewDelegate {
     
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private var searchController: SearchController!
     
     let dataSource = RestaurantsListDataSource()
     
@@ -23,6 +24,8 @@ class RestaurantsListViewController: UIViewController, FavoritableViewDelegate, 
         tableView.contentInset = UIEdgeInsets(top: 4.0, left: 0.0, bottom: 4.0, right: 0.0)
         
         title = dataSource.title
+        
+        searchController.delegate = dataSource
         
         view.backgroundColor = Color.lightGray
         
@@ -46,6 +49,10 @@ class RestaurantsListViewController: UIViewController, FavoritableViewDelegate, 
     }
     
     // MARK: - UITableViewDelegate
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let _ = searchController.resignFirstResponder()
+    }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if let favoriteView = cell as? FavoritableView {
