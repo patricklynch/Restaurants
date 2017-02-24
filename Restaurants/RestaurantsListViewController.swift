@@ -20,6 +20,9 @@ class RestaurantsListViewController: UIViewController, FavoritableViewDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
         dataSource.delegate = tableView
         tableView.dataSource = dataSource
         tableView.delegate = self
@@ -31,17 +34,18 @@ class RestaurantsListViewController: UIViewController, FavoritableViewDelegate, 
         
         view.backgroundColor = Color.lightGray
         
+        let localizedTitle = "Filters"
+        let barButtonItem = BarButtonItem(title: localizedTitle, target: self, action: #selector(showFilters))
+        navigationItem.rightBarButtonItem = barButtonItem
+        
         dataSource.load() { [weak self] in
             self?.tableView.reloadData()
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        let localizedTitle = "Filters"
-        let barButtonItem = BarButtonItem(title: localizedTitle, target: self, action: #selector(showFilters))
-        navigationItem.rightBarButtonItem = barButtonItem
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        updateInsets()
     }
     
     // MARK: - Actions
@@ -84,5 +88,42 @@ class RestaurantsListViewController: UIViewController, FavoritableViewDelegate, 
         } else {
             restaurant.unfavorite()
         }
+    }
+    
+    // MARK: - Keyboard (searching)
+    
+    private func updateInsets() {
+        let bottomInset: CGFloat
+        if let keyboardInset = keyboardInset {
+            bottomInset = keyboardInset.bottom
+        } else {
+            bottomInset = 0.0
+        }
+        let insets = UIEdgeInsets(
+            top: tableView.contentInset.top,
+            left: tableView.contentInset.left,
+            bottom: bottomInset,
+            right: tableView.contentInset.right
+        )
+        tableView.contentInset = insets
+        tableView.scrollIndicatorInsets = insets
+    }
+    
+    var keyboardInset: UIEdgeInsets? {
+        didSet {
+            view.setNeedsLayout()
+        }
+    }
+    
+    @objc private func keyboardWillShow(notification: Notification) {
+        guard let userInfo = notification.userInfo,
+            let keyboardSize = (userInfo[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue else {
+                return
+        }
+        keyboardInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardSize.height, right: 0.0)
+    }
+    
+    @objc private func keyboardWillHide(notification: Notification) {
+        keyboardInset = nil
     }
 }
