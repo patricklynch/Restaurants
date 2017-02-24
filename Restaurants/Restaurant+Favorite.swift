@@ -19,21 +19,13 @@ extension Restaurant {
         return favoritesArray.contains(self.name)
     }
     
-    func favorite() {
-        set(isFavorite: true)
-    }
-    
-    func unfavorite() {
-        set(isFavorite: false)
-    }
-    
-    private func set(isFavorite: Bool, in defaults: UserDefaults = UserDefaults.standard) {
-        guard !isFavorited(in: defaults) else {
-            return
-        }
-        
+    func set(isFavorite: Bool, in defaults: UserDefaults = UserDefaults.standard) {
         var favoritesArray = defaults.value(forKey: DefaultsKeys.favorites) as? [String] ?? []
-        favoritesArray.append(self.name)
+        if isFavorite {
+            favoritesArray.append(self.name)
+        } else {
+            favoritesArray = favoritesArray.filter { $0 != self.name }
+        }
         defaults.set(favoritesArray, forKey: DefaultsKeys.favorites)
         defaults.synchronize()
     }

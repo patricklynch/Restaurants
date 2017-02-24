@@ -13,6 +13,7 @@ import SwiftyJSON
 class FavoriteTests: XCTestCase {
     
     var restaurant: Restaurant!
+    var defaults: UserDefaults!
     
     override func setUp() {
         super.setUp()
@@ -22,32 +23,35 @@ class FavoriteTests: XCTestCase {
                 return
         }
         self.restaurant = restaurant
+        self.defaults = UserDefaults(suiteName: "com.lynchdev.Restaurants.unitTests")
+        restaurant.set(isFavorite: false, in: defaults)
     }
     
     override func tearDown() {
         super.tearDown()
+        restaurant.set(isFavorite: false, in: defaults)
     }
     
     func testToggle() {
-        XCTAssertFalse(restaurant.isFavorited())
+        XCTAssertFalse(restaurant.isFavorited(in: defaults))
         
-        restaurant.favorite()
-        XCTAssert(restaurant.isFavorited())
+        restaurant.set(isFavorite: true, in: defaults)
+        XCTAssert(restaurant.isFavorited(in: defaults))
         
-        restaurant.unfavorite()
-        XCTAssertFalse(restaurant.isFavorited())
+        restaurant.set(isFavorite: false, in: defaults)
+        XCTAssertFalse(restaurant.isFavorited(in: defaults))
     }
     
     func testRepeat() {
-        XCTAssertFalse(restaurant.isFavorited())
+        XCTAssertFalse(restaurant.isFavorited(in: defaults))
         
-        restaurant.unfavorite()
-        XCTAssertFalse(restaurant.isFavorited())
+        restaurant.set(isFavorite: false, in: defaults)
+        XCTAssertFalse(restaurant.isFavorited(in: defaults))
         
-        restaurant.favorite()
-        XCTAssert(restaurant.isFavorited())
+        restaurant.set(isFavorite: true, in: defaults)
+        XCTAssert(restaurant.isFavorited(in: defaults))
         
-        restaurant.favorite()
-        XCTAssert(restaurant.isFavorited())
+        restaurant.set(isFavorite: true, in: defaults)
+        XCTAssert(restaurant.isFavorited(in: defaults))
     }
 }

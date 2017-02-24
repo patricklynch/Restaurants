@@ -84,9 +84,9 @@ class RestaurantsListViewController: UIViewController, FavoritableViewDelegate, 
         }
        
         if !restaurant.isFavorited() {
-            restaurant.favorite()
+            restaurant.set(isFavorite: true)
         } else {
-            restaurant.unfavorite()
+            restaurant.set(isFavorite: false)
         }
     }
     
