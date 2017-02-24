@@ -84,7 +84,7 @@ class RestaurantsListDataSource: NSObject, Sortable, SearchControllerDelegate, S
     
     // MARK: - Sortable
     
-    var sortOption: SortOptions? = .deliveryCosts {
+    var sortOption: SortOptions? = SortOptions.defaultCase {
         didSet {
             items = NSOrderedSet(array: [])
             
@@ -101,11 +101,6 @@ class RestaurantsListDataSource: NSObject, Sortable, SearchControllerDelegate, S
     }
     
     private func sortAndFilterItems() {
-        guard let sortOption = sortOption else {
-            items = unsortedItems
-            return
-        }
-        
         let restaurants = unsortedItems.flatMap { $0 as? Restaurant }
         backgroundQueue.async { [weak self] in
             
@@ -119,12 +114,7 @@ class RestaurantsListDataSource: NSObject, Sortable, SearchControllerDelegate, S
             }
             
             // Sort
-            let sortedResults: [Restaurant]
-            if let sorter = sortOption.sorter {
-                sortedResults = sorter.sorted(from: filteredResults)
-            } else {
-                sortedResults = filteredResults
-            }
+            let sortedResults = self?.sortOption?.sorted(from: filteredResults) ?? filteredResults
             
             DispatchQueue.main.async { [weak self] in
                 self?.items = NSOrderedSet(array: sortedResults)

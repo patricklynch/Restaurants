@@ -15,6 +15,8 @@ class RestaurantsListViewController: UIViewController, FavoritableViewDelegate, 
     
     let dataSource = RestaurantsListDataSource()
     
+    private let oparationQueue = OperationQueue()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,7 +47,15 @@ class RestaurantsListViewController: UIViewController, FavoritableViewDelegate, 
     // MARK: - Actions
     
     @objc private func showFilters() {
-        
+        let operation = SelectSortOption(from: self)
+        operation.completionBlock = { [weak self] in
+            DispatchQueue.main.async {
+                if let selectedSortOption = operation.selectedSortOption {
+                    self?.dataSource.sortOption = selectedSortOption
+                }
+            }
+        }
+        oparationQueue.addOperation(operation)
     }
     
     // MARK: - UITableViewDelegate

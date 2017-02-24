@@ -57,25 +57,6 @@ class RatingView: UIControl {
         }
     }
     
-    private func animateTo(index endIndex: Int) {
-        for i in 0...endIndex {
-            let button = buttons[i]
-            let scale: CGFloat = 1.4
-            button.transform = CGAffineTransform(scaleX: scale, y: scale)
-            UIView.animate(
-                withDuration: 0.65,
-                delay: TimeInterval(i) * 0.05,
-                usingSpringWithDamping: 0.4,
-                initialSpringVelocity: 0.3,
-                options: [],
-                animations: {
-                    button.transform = CGAffineTransform.identity
-                },
-                completion: nil
-            )
-        }
-    }
-    
     // MARK: - UIView
     
     override func layoutSubviews() {
