@@ -231,15 +231,15 @@
                                             <constraint firstAttribute="height" priority="900" constant="293" id="EU1-xJ-Rxk"/>
                                         </constraints>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SortSelectCell" id="82M-Tm-0w4" customClass="SortSelectCell" customModule="Restaurants" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="SortSelectCell" id="82M-Tm-0w4" customClass="SortSelectCell" customModule="Restaurants" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="240" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="82M-Tm-0w4" id="uhw-pj-pQQ">
-                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="43"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="201" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uuv-Jq-vtp">
-                                                            <rect key="frame" x="8" y="8" width="224" height="27.5"/>
+                                                            <rect key="frame" x="8" y="8" width="185" height="27.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -258,9 +258,6 @@
                                             </tableViewCell>
                                         </prototypes>
                                         <sections/>
-                                        <connections>
-                                            <outlet property="dataSource" destination="DMU-Lu-E4l" id="xhH-2W-PE8"/>
-                                        </connections>
                                     </tableView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.70951947770000001" colorSpace="calibratedWhite"/>
@@ -288,15 +285,13 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="backgroundView" destination="fKI-pH-U1l" id="7sw-TZ-pe9"/>
-                        <outlet property="dataSource" destination="DMU-Lu-E4l" id="mC0-cN-Ch9"/>
                         <outlet property="tableView" destination="LZZ-iE-TEG" id="gyH-D4-XRD"/>
                         <outlet property="tableViewHeight" destination="EU1-xJ-Rxk" id="dQN-u2-opm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h9e-4W-0d1" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="DMU-Lu-E4l" customClass="SortSelectDataSource" customModule="Restaurants" customModuleProvider="target"/>
             </objects>
-            <point key="canvasLocation" x="-314.39999999999998" y="800.14992503748135"/>
+            <point key="canvasLocation" x="-315" y="868"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2Fd-gQ-GaA">

@@ -9,7 +9,7 @@
 import UIKit
 
 protocol SortSelectionDelegate {
-    func didSelect(sortOption: SortOptions)
+    func didSelect(sortOption: SortOption)
     func didCancel()
 }
 
@@ -18,8 +18,15 @@ class SortSelectViewController: UIViewController, UITableViewDelegate, LightboxT
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var tableViewHeight: NSLayoutConstraint!
     
-    @IBOutlet var dataSource: SortSelectDataSource!
+    private let dataSource = SortSelectDataSource()
     
+    var currentSelection: SortOption {
+        set {
+            dataSource.currentSelection = newValue
+        } get {
+            return dataSource.currentSelection
+        }
+    }
     var delegate: SortSelectionDelegate?
     
     // MARK: - UIViewController
@@ -29,6 +36,7 @@ class SortSelectViewController: UIViewController, UITableViewDelegate, LightboxT
         
         tableView.layer.cornerRadius = 5.0
         tableView.delegate = self
+        tableView.dataSource = dataSource
     }
     
     override func viewDidLayoutSubviews() {
@@ -48,6 +56,8 @@ class SortSelectViewController: UIViewController, UITableViewDelegate, LightboxT
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedOption = dataSource.options[indexPath.row]
+        currentSelection = selectedOption
+        tableView.reloadData()
         delegate?.didSelect(sortOption: selectedOption)
     }
     

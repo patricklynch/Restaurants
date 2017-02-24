@@ -22,8 +22,7 @@ extension Restaurant {
         guard let string = Restaurant.currentFormatter.string(from: NSNumber(value: number)) else {
             return ""
         }
-        let localizedFormat = NSLocalizedString("description.format.avarageItem", comment: "") as NSString
-        return NSString(format: localizedFormat, string) as String
+        return "Average Item: \(string)"
     }
     
     var deliveryDescription: String {
@@ -31,8 +30,7 @@ extension Restaurant {
         guard let string = Restaurant.currentFormatter.string(from: NSNumber(value: number)) else {
             return ""
         }
-        let localizedFormat = NSLocalizedString("description.format.delivery", comment: "") as NSString
-        return NSString(format: localizedFormat, string) as String
+        return "Delivery: \(string)"
     }
     
     var locationDescription: String {
@@ -40,8 +38,7 @@ extension Restaurant {
         guard let string = Restaurant.distanceFormatter.string(from: NSNumber(value: distance)) else {
             return ""
         }
-        let localizedFormat = NSLocalizedString("description.format.location", comment: "") as NSString
-        return NSString(format: localizedFormat, string) as String
+        return "\(string) km away"
     }
 }
 
@@ -49,9 +46,9 @@ extension Restaurant.Status {
     
     var description: String {
         switch self {
-        case .open:         return NSLocalizedString("status.open", comment: "")
-        case .closed:       return NSLocalizedString("status.closed", comment: "")
-        case .orderAhead:   return NSLocalizedString("status.orderAhead", comment: "")
+        case .open:         return "Open"
+        case .closed:       return "Closed"
+        case .orderAhead:   return "Order Ahread"
         }
     }
 }

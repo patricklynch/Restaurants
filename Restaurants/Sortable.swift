@@ -9,30 +9,29 @@
 import UIKit
 
 protocol Sortable {
-    var sortOption: SortOptions? { set get }
+    var sortOption: SortOption { set get }
 }
 
-enum SortOptions {
-    case bestMatch, newest, ratingAverage, distance, popularity, averageProductPrice, deliveryCosts, minCost
+enum SortOption {
+    case bestMatch, newest, ratingAverage, distance, popularity, averageProductPrice, deliveryCosts
     
-    static var all: [SortOptions] {
-        return [bestMatch, newest, ratingAverage, distance, popularity, averageProductPrice, deliveryCosts, minCost]
+    static var all: [SortOption] {
+        return [bestMatch, newest, ratingAverage, distance, popularity, averageProductPrice, deliveryCosts]
     }
     
-    static var defaultCase: SortOptions {
+    static var defaultCase: SortOption {
         return bestMatch
     }
     
     var label: String {
         switch self {
-        case .bestMatch:            return NSLocalizedString("sortOption.bestMatch", comment: "")
-        case .newest:               return NSLocalizedString("sortOption.newest", comment: "")
-        case .ratingAverage:        return NSLocalizedString("sortOption.ratingAverage", comment: "")
-        case .distance:             return NSLocalizedString("sortOption.distance", comment: "")
-        case .popularity:           return NSLocalizedString("sortOption.popularity", comment: "")
-        case .averageProductPrice:  return NSLocalizedString("sortOption.averageProductPrice", comment: "")
-        case .deliveryCosts:        return NSLocalizedString("sortOption.deliveryCosts", comment: "")
-        case .minCost:              return NSLocalizedString("sortOption.minCost", comment: "")
+        case .bestMatch:            return "Default"
+        case .newest:               return "Newest"
+        case .ratingAverage:        return "Rating"
+        case .distance:             return "Distance"
+        case .popularity:           return "Popularity"
+        case .averageProductPrice:  return "Price"
+        case .deliveryCosts:        return "Delivery"
         }
     }
     
@@ -58,9 +57,6 @@ enum SortOptions {
         
         case .deliveryCosts:
             return objects.sorted { $0.sortingValues.deliveryCosts < $1.sortingValues.deliveryCosts }
-            
-        case .minCost:
-            return objects.sorted { $0.sortingValues.minCost < $1.sortingValues.minCost }
         }
     }
 }

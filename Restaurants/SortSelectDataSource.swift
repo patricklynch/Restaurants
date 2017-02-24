@@ -10,13 +10,17 @@ import UIKit
 
 class SortSelectDataSource: NSObject, UITableViewDataSource {
     
-    let options = SortOptions.all
+    let options = SortOption.all
+    
+    var currentSelection = SortOption.defaultCase
     
     // MARK: - UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SortSelectCell", for: indexPath) as! SortSelectCell
-        cell.title = options[indexPath.row].label
+        let option = options[indexPath.row]
+        cell.title = option.label
+        cell.isSelected = option == currentSelection
         return cell
     }
     

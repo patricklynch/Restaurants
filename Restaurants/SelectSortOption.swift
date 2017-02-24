@@ -13,11 +13,13 @@ class SelectSortOption: OpenNavigationOperation, SortSelectionDelegate {
     let transitionDelegate = TransitionDelegate(transition: LightboxTransition())
     
     private weak var originViewController: UIViewController?
+    let initialSelectedSortOption: SortOption
     
-    var selectedSortOption: SortOptions?
+    var selectedSortOption: SortOption?
     
-    init(from originViewController: UIViewController) {
+    init(from originViewController: UIViewController, at sortOption: SortOption) {
         self.originViewController = originViewController
+        self.initialSelectedSortOption = sortOption
     }
     
     override func performNavigation() {
@@ -30,13 +32,14 @@ class SelectSortOption: OpenNavigationOperation, SortSelectionDelegate {
         let viewController: SortSelectViewController = UIViewController.fromStoryboard(named: "Main")
         viewController.transitioningDelegate = transitionDelegate
         viewController.delegate = self
+        viewController.currentSelection = initialSelectedSortOption
         viewController.modalPresentationStyle = .custom
         originViewController.present(viewController, animated: true, completion: nil)
     }
     
     // MARK: - SortSelectionDelegate
     
-    func didSelect(sortOption: SortOptions) {
+    func didSelect(sortOption: SortOption) {
         self.selectedSortOption = sortOption
         originViewController?.dismiss(animated: true) { [weak self] in
             self?.navigationDidFinish()

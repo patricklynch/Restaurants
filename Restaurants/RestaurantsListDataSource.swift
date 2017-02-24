@@ -23,7 +23,7 @@ class RestaurantsListDataSource: NSObject, Sortable, SearchControllerDelegate, S
         }
     }
     
-    let title: String = NSLocalizedString("title.restaurants", comment: "")
+    let title = "Restaurants"
     
     // Background queue for loading restaurants
     let loadingQueue = OperationQueue()
@@ -84,7 +84,7 @@ class RestaurantsListDataSource: NSObject, Sortable, SearchControllerDelegate, S
     
     // MARK: - Sortable
     
-    var sortOption: SortOptions? = SortOptions.defaultCase {
+    var sortOption: SortOption = SortOption.defaultCase {
         didSet {
             items = NSOrderedSet(array: [])
             
@@ -106,37 +106,19 @@ class RestaurantsListDataSource: NSObject, Sortable, SearchControllerDelegate, S
             
             // Fitler
             let filteredResults: [Restaurant]
-            if let searchTerm = self?.searchTerm, searchTerm.containsNonSpaceCharacter() {
-                let sanitzedTerm = searchTerm.lowercased()
-                filteredResults = restaurants.filter { $0.name.matches(sanitzedTerm) }
+            if let searchTerm = self?.searchTerm {
+                filteredResults = Restaurant.search(from: restaurants, matching: searchTerm)
             } else {
                 filteredResults = restaurants
             }
             
             // Sort
-            let sortedResults = self?.sortOption?.sorted(from: filteredResults) ?? filteredResults
+            let sortedResults = self?.sortOption.sorted(from: filteredResults) ?? filteredResults
             
             DispatchQueue.main.async { [weak self] in
                 self?.items = NSOrderedSet(array: sortedResults)
             }
         }
-    }
-}
-
-fileprivate extension String {
-    
-    func matches(_ searchTerm: String) -> Bool {
-        if searchTerm.characters.count == 1 {
-            let words = lowercased().components(separatedBy: " ")
-            return words.contains { $0.characters.first == searchTerm.characters.first }
-        } else {
-            return lowercased().contains(searchTerm)
-        }
-    }
-    
-    func containsNonSpaceCharacter() -> Bool {
-        let space = " ".characters.first!
-        return !characters.filter { $0 != space }.isEmpty
     }
 }
 

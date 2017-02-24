@@ -39,7 +39,7 @@ class RestaurantsListViewController: UIViewController, FavoritableViewDelegate, 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        let localizedTitle = NSLocalizedString("title.filters", comment: "")
+        let localizedTitle = "Filters"
         let barButtonItem = BarButtonItem(title: localizedTitle, target: self, action: #selector(showFilters))
         navigationItem.rightBarButtonItem = barButtonItem
     }
@@ -47,7 +47,7 @@ class RestaurantsListViewController: UIViewController, FavoritableViewDelegate, 
     // MARK: - Actions
     
     @objc private func showFilters() {
-        let operation = SelectSortOption(from: self)
+        let operation = SelectSortOption(from: self, at: dataSource.sortOption)
         operation.completionBlock = { [weak self] in
             DispatchQueue.main.async {
                 if let selectedSortOption = operation.selectedSortOption {

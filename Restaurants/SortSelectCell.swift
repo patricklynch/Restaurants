@@ -20,7 +20,7 @@ class SortSelectCell: UITableViewCell {
     
     override var isSelected: Bool {
         didSet {
-            
+            accessoryType = isSelected ? .checkmark : .none
         }
     }
 }
